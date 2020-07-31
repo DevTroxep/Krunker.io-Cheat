@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+
+  "name": "Krunker Hacks",
+  "description": "",
+  "version": "0.0.1",
+  "background": {
+    "scripts": ["/src/background.js"]
+  },
+   "web_accessible_resources": [
+    "/src/jquery-3.5.1.min.js",
+    "src/content.js"
+  ],
+  "icons": {
+	"16": "icon.png",
+	"48": "icon.png",
+	"128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://krunker.io/*"],
+      "js": ["/src/inject.js"],
+      "all_frames": false,
+	  "run_at": "document_start"
+    }
+  ],
+  "browser_action": { "default_popup": "/src/popup.html" },
+  "permissions": [
+        "tabs",
+        "\u003Call_urls\u003E",
+        "cookies",
+        "contextMenus",
+        "unlimitedStorage",
+        "notifications",
+        "storage",
+        "clipboardWrite",
+		"downloads",
+		"webNavigation",
+		"proxy"
+    ],
+  "content_security_policy": "script-src 'self' https://cdn.mxpnl.com; object-src 'self'"
+}
